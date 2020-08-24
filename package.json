@@ -1,14 +1,25 @@
 {
   "name": "emote-resizer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "postinstall": "install-app-deps",
+    "publish": "electron-builder -p always",
+    "start": "electron ."
   },
   "author": "VariXx",
   "license": "ISC",
   "dependencies": {
     "resize-img": "^2.0.0"
+  },
+  "devDependencies": {
+    "electron": "^9.2.1"
+  },
+  "build": {
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }
