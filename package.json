@@ -1,0 +1,14 @@
+{
+  "name": "emote-resizer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "VariXx",
+  "license": "ISC",
+  "dependencies": {
+    "resize-img": "^2.0.0"
+  }
+}
