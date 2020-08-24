@@ -8,18 +8,27 @@
     "publish": "electron-builder -p always",
     "start": "electron ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VariXx/emote-resizer.git"
+  },  
   "author": "VariXx",
   "license": "ISC",
   "dependencies": {
+    "electron-updater": "^4.3.4",
     "resize-img": "^2.0.0"
   },
   "devDependencies": {
     "electron": "^9.2.1"
   },
   "build": {
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+    "productName": "Emote Resizer",
+    "win": {
+      "target": [
+        {
+          "target": "portable"
+        }
+      ]
     }
   }
 }

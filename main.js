@@ -29,8 +29,8 @@ async function resize(imgName, newSizeWidth, newSizeHeight) {
 
 function createWindow() { 
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 640,
+        height: 480,
         webPreferences: {
             nodeIntegration: true
         }
