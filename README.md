@@ -8,11 +8,22 @@ Emote resizer is a tool that resizes .png files to Twitch emote sizes. The name 
 
 ## Installation
 
-- TO DO - install instructions
+Download and run the installer linked in the [latest release](https://github.com/VariXx/emote-resizer/releases) or build using the instructions below.
+
+### Building  
+- Clone the repository 
+- Install electron-builder (global recommended)
+``npm install -g electron-builder``
+- Install dependencies 
+``npm install`` 
+- Run electron-builder from the project directory 
+``electron-builder``
 
 ## Usage
 
-- TO DO - usage
+- Drag a .png file to the box labled "Drag and drop your image(s) here"
+- Just wait a moment 😎
+- You will see 3 new files with their resolutons (28x28, 56x56, 112x112) added to their names. 
 
 ## Support
 
