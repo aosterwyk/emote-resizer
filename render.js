@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, shell } = require('electron');
 
 document.addEventListener('drop', (event) => { 
 	event.preventDefault(); 
@@ -21,3 +21,12 @@ document.addEventListener('dragover', (e) => {
 // document.addEventListener('dragleave', (event) => { 
 // 	console.log('File has left the Drop Space'); 
 // }); 
+
+function externalLink(destination) {
+    if(destination == `discord`) {
+        shell.openExternal(`https://discord.gg/QNppY7T`);
+    }
+    if(destination == `help`) {
+        // shell.openExternal(`https://github.com/VariXx/emote-resizer/wiki`); // keep this broken to test autoupdate
+    }
+}
