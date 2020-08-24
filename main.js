@@ -37,6 +37,7 @@ function createWindow() {
     });
 
     win.loadFile('index.html');
+    win.menuBarVisible = false;
     // win.webContents.openDevTools();
 }
 
