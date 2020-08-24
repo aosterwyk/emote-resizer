@@ -6,6 +6,8 @@
 
 Emote resizer is a tool that resizes .png files to Twitch emote sizes. The name isn't very creative. 
 
+![preview](https://acceptdefaults.com/emote-resizer/emote-resizer-preview.gif)
+
 ## Installation
 
 Download and run the installer linked in the [latest release](https://github.com/VariXx/emote-resizer/releases) or build using the instructions below.
