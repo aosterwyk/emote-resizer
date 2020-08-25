@@ -1,5 +1,5 @@
 const fs = require('fs');
-const resizeImg = require('resize-img');
+const Jimp = require('jimp');
 const { autoUpdater } = require('electron-updater');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const emoteSizes = [112, 56, 28];
@@ -8,24 +8,18 @@ const emoteSizes = [112, 56, 28];
 
 async function resize(imgName, newSizeWidth, newSizeHeight) {
     if(imgName.includes('.png')) {
-        const newImg = await resizeImg(fs.readFileSync(imgName), {
-            width: newSizeWidth,
-            height: newSizeHeight
-            });
+        console.log(`Reading image ${imgName}`);
+        const sourceImg = await Jimp.read(`${imgName}`);
+        console.log(`Resizing image ${imgName}`);
+        sourceImg.resize(newSizeWidth, newSizeHeight);
+        console.log(`${imgName} resized to ${newSizeWidth} x ${newSizeHeight}`);
         let splitImgName = imgName.split(".png");
         let newFilename = `${splitImgName[0]}-${newSizeHeight}x${newSizeWidth}.png`;
-        fs.writeFileSync(newFilename, newImg);
-        console.log(`Resized image: ${newFilename}`);
+        let saveResult = await sourceImg.writeAsync(newFilename);
+        console.log(`Resized image saved to ${newFilename}`);
     }
     else { console.log('Filename does not end in .png. Skipping...'); }
 }
-
-// test loop for basic emote sizes
-// (async () => {
-//     for(let i = 0; i < emoteSizes.length; i++) {
-//         await resize(testImg, emoteSizes[i], emoteSizes[i]);
-//     }
-// })();
 
 function createWindow() { 
     const win = new BrowserWindow({
