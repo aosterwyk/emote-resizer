@@ -4,8 +4,37 @@ document.addEventListener('drop', (event) => {
 	event.preventDefault(); 
 	event.stopPropagation(); 
     for(const file of event.dataTransfer.files) {
-        console.log(file.path);
-        ipcRenderer.invoke('draggedItem', file.path);
+        // console.log(file.path);
+        
+        let outputSizes = [];
+        if(document.getElementById(`emotes`).checked) { 
+            outputSizes.push(28, 56, 112);
+        }
+        if(document.getElementById(`badges`).checked) {
+            outputSizes.push(18, 36, 72);
+        }
+        console.log(outputSizes);
+
+        let resizeMode = ``;
+        let resizeModes = document.getElementsByName(`resizeModeChoice`);
+        for(let i=0; i < resizeModes.length; i++) {
+            if(resizeModes[i].checked) { 
+                // console.log(`${resizeModes[i].value} is checked`);
+                resizeMode = resizeModes[i].value;
+            }
+            else {
+                // console.log(`${resizeModes[i].value} is not checked`);
+            }
+        }
+        // console.log(`Using resize mode: ${resizeMode}`);
+
+        let resizeJob = {
+            filePath: file.path,
+            resizeMode: resizeMode,
+            resolutions: outputSizes
+        }
+        ipcRenderer.invoke('draggedItem', resizeJob);
+        // ipcRenderer.invoke('draggedItem', file.path);        
     }
 }); 
 
