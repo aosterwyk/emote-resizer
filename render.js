@@ -1,10 +1,32 @@
 const { ipcRenderer, shell } = require('electron');
 
+function updateStatus(newMsgType, newMsg) {
+    let oldStatus = document.getElementById(`statusMsg`);
+    if(newMsgType === `error`) {
+        msgColor = `text-danger`;
+    }
+    else if(newMsgType === `success`) {
+        msgColor = `text-success`;
+    }
+    else {
+        msgColor = `text-muted`;
+    }
+    oldStatus.innerHTML = `<small class='${msgColor} text-xl-left'>${newMsg}</small><br>${oldStatus.innerHTML}`;
+    console.log(newMsg);
+}
+
+ipcRenderer.on(`statusMessage`, (event, msg) => {
+    // statusMsg(msg);
+    // console.log(msg.message);
+    updateStatus(msg.msgType, msg.message);
+});
+
 document.addEventListener('drop', (event) => { 
 	event.preventDefault(); 
 	event.stopPropagation(); 
     for(const file of event.dataTransfer.files) {
         // console.log(file.path);
+        updateStatus(`info`, `Loaded ${file.path}`);
         
         let outputSizes = [];
         if(document.getElementById(`emotes`).checked) { 
@@ -13,7 +35,7 @@ document.addEventListener('drop', (event) => {
         if(document.getElementById(`badges`).checked) {
             outputSizes.push(18, 36, 72);
         }
-        console.log(outputSizes);
+        // console.log(outputSizes);
 
         let resizeMode = ``;
         let resizeModes = document.getElementsByName(`resizeModeChoice`);
@@ -27,6 +49,7 @@ document.addEventListener('drop', (event) => {
             }
         }
         // console.log(`Using resize mode: ${resizeMode}`);
+        updateStatus(`info`, `Using resize mode: ${resizeMode}`);
 
         let resizeJob = {
             filePath: file.path,

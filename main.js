@@ -1,16 +1,28 @@
 const fs = require('fs');
 const Jimp = require('jimp');
 const { autoUpdater } = require('electron-updater');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
 const emoteSizes = [112, 56, 28];
+var win;
 
 // const testImg = 'test.png'; // test file 
 
+function sendStatusMsg(newMsgType, newMsg) {
+    let sendMsg = {
+        msgType: newMsgType,
+        message: newMsg
+    }
+    win.webContents.send('statusMessage', sendMsg);
+    console.log(newMsg);
+}
+
 async function resize(imgName, newSizeWidth, newSizeHeight, newResizeMode) {
     if(imgName.includes('.png')) {
-        console.log(`Reading image ${imgName}`);
+        // console.log(`Reading image ${imgName}`);
+        sendStatusMsg(`info`,`Reading image ${imgName}`);
         const sourceImg = await Jimp.read(`${imgName}`);
-        console.log(`Resizing image ${imgName}`);
+        // console.log(`Resizing image ${imgName}`);
+        sendStatusMsg(`info`,`Resizing image ${imgName}`);
         let resizeMode = Jimp.RESIZE_BILINEAR; 
         if(newResizeMode !== `default`) {
             if(newResizeMode == `nearestNeighbor`) {
@@ -30,17 +42,24 @@ async function resize(imgName, newSizeWidth, newSizeHeight, newResizeMode) {
             }
         }
         sourceImg.resize(newSizeWidth, newSizeHeight, resizeMode);
-        console.log(`${imgName} resized to ${newSizeWidth} x ${newSizeHeight} (${resizeMode})`);
+        // console.log(`${imgName} resized to ${newSizeWidth} x ${newSizeHeight} (${resizeMode})`);
+        sendStatusMsg(`success`, `${imgName} resized to ${newSizeWidth} x ${newSizeHeight} (${resizeMode})`);
         let splitImgName = imgName.split(".png");
         let newFilename = `${splitImgName[0]}-${newSizeHeight}x${newSizeWidth}.png`;
-        let saveResult = await sourceImg.writeAsync(newFilename);
-        console.log(`Resized image saved to ${newFilename}`);
+        try {
+            await sourceImg.writeAsync(newFilename);
+        }
+        catch(error) {
+            sendStatusMsg(`error`, `Error saving image ${newFilename}: ${error}`);
+        }
+        // console.log(`Resized image saved to ${newFilename}`);
+        sendStatusMsg(`success`, `Resized image saved to ${newFilename}`);
     }
-    else { console.log('Filename does not end in .png. Skipping...'); }
+    else { sendStatusMsg(`error`, 'Filename does not end in .png. Skipping...'); }
 }
 
 function createWindow() { 
-    const win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 1000,
         height: 800,
         webPreferences: {
@@ -73,7 +92,7 @@ app.on('ready', () => {
 });
 
 ipcMain.handle('draggedItem', async (event, args) => {
-    console.log(args);
+    // console.log(args);
     // for(let i = 0; i < emoteSizes.length; i++) {
     //     await resize(args,emoteSizes[i],emoteSizes[i]);
     // }

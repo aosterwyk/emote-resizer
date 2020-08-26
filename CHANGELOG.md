@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added resize mode options
 - Added output size options for emotes (28px, 56px, 112px) and badges (18px, 36px, 72px)
 - Added an image icon to drag area
+- Added status messages
 - Changed image resizing library to Jimp.
 
 ## [0.5.0] - 2020-08-23
