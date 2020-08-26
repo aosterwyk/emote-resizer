@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 _No unreleased changes_
 
-## [0.6.1] - 2020-08-25
+## [0.6.2] - 2020-08-25
 - Changed height resize back to fixed size
 
 ## [0.6.1] - 2020-08-25
@@ -47,4 +47,4 @@ _No unreleased changes_
 [0.3.0]: https://github.com/VariXx/emote-resizer/tree/v0.3.0
 [0.2.0]: https://github.com/VariXx/emote-resizer/tree/v0.2.0
 [0.1.0]: https://github.com/VariXx/emote-resizer/tree/v0.1.0
-[Unreleased]: https://github.com/VariXx/emote-resizer/compare/v0.6.1...master
+[Unreleased]: https://github.com/VariXx/emote-resizer/compare/v0.6.2...master
