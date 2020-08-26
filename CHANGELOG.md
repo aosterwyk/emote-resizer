@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 _No unreleased changes_
 
+## [0.6.1] - 2020-08-25
+- Changed height resize to auto size
+
 ## [0.6.0] - 2020-08-25
 - Added resize mode options
 - Added output size options for emotes (28px, 56px, 112px) and badges (18px, 36px, 72px)
