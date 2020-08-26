@@ -21,9 +21,11 @@ Download and run the installer linked in the [latest release](https://github.com
 
 ## Usage
 
+- Check emote and/or badge checkboxes
+- (Optional) Select resize mode
 - Drag a .png file to the box labled "Drag and drop your image(s) here"
 - Just wait a moment 😎
-- You will see 3 new files with their resolutons (28x28, 56x56, 112x112) added to their names. 
+- You will see 3-6 new files with their resolutons (ex: 28x28, 56x56, etc.) added to their names. 
 
 ## Support
 
