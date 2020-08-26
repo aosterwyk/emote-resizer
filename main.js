@@ -93,6 +93,6 @@ app.on('ready', () => {
 
 ipcMain.handle('draggedItem', async (event, args) => {
     for(let i = 0; i < args.resolutions.length; i++) {
-        await resize(args.filePath, args.resolutions[i], Jimp.AUTO, args.resizeMode);
+        await resize(args.filePath, args.resolutions[i], args.resolutions[i], args.resizeMode);
     }
 });
