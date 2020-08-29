@@ -13,6 +13,7 @@ _No unreleased changes_
 
 ### Changed
 - Changed Bootstrap theme to [Sketchy](https://bootswatch.com/sketchy/)
+- Changed background color
 
 ### Fixed
 - Fixed changelog formatting
