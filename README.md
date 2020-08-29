@@ -32,4 +32,4 @@ Download and run the installer linked in the [latest release](https://github.com
 [Discord server](https://discord.gg/QNppY7T) or DM `VariXx#8317`
 
 ## License
-
+[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
