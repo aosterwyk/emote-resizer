@@ -61,6 +61,6 @@ function externalLink(destination) {
         shell.openExternal(`https://discord.gg/QNppY7T`);
     }
     if(destination == `help`) {
-        shell.openExternal(`https://github.com/VariXx/emote-resizer/wiki`); 
+        shell.openExternal(`https://github.com/aosterwyk/emote-resizer/wiki`); 
     }
 }
