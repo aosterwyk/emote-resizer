@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 _No unreleased changes_
 
+## [0.7.0] - 2021-11-18
+### Changed
+- Changed year in license 
+
+### Security 
+- Updated packages with non-breaking updates
+
 ## [0.7.0] - 2020-08-28
 ### Added
 - Added [Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/) license info
