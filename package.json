@@ -1,6 +1,6 @@
 {
   "name": "emote-resizer",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VariXx/emote-resizer.git"
+    "url": "git+https://github.com/aosterwyk/emote-resizer.git"
   },
-  "author": "VariXx",
+  "author": "Aaron Osterwyk",
   "license": "ISC",
   "dependencies": {
     "electron-updater": "^4.3.4",
